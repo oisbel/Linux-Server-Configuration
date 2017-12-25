@@ -10,14 +10,20 @@ In this project, we will take a baseline installation of a Linux server and prep
 ### iii. Softwares installed and configuration changes made
 
 ##### Update all currently installed packages( step 3)
-________________
+___
 Run the following commands to update currently installed packages, and removes packages no longer needed:
 ```
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get autoremove
 ```
-
+#####  Change the SSH port from 22 to 2200
+___
+Open sshd_config and change # Port 22 (to Port 2200)
+```
+sudo nano /etc/ssh/sshd_config
+sudo service ssh restart
+```
 
 ### Resources Used
 - StackOverflow
