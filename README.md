@@ -9,6 +9,16 @@ In this project, we will take a baseline installation of a Linux server and prep
 
 ### iii. Softwares installed and configuration changes made
 
+##### Update all currently installed packages( step 3)
+________________
+Run the following commands to update currently installed packages, and removes packages no longer needed:
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get autoremove
+```
+
+
 ### Resources Used
 - StackOverflow
 - Knockout JS Documentation
