@@ -27,7 +27,7 @@ Open sshd_config and change # Port 22 (to Port 2200):
 ##### Configure the Uncomplicated Firewall (UFW)
 ___
 Only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
-First check the ufw status. Then allow and deny according to the case( allow SSH (port 2200), HTTP (port 80), and NTP (port 123)), and finally enable the firewall:
+First check the ufw status. Then, allow and deny according to the case( allow SSH (port 2200), HTTP (port 80), and NTP (port 123)), and finally enable the firewall:
 ```
 $ sudo ufw status
 $ sudo ufw default deny incoming
@@ -38,14 +38,14 @@ $ sudo ufw allow www
 $ sudo ufw allow 123
 $ sudo ufw enable)
 ```
-Since firewall is on, and SSH had beeen change to 2200, we check if we still can connect via SSH:
+Since firewall is on, and SSH had beeen change to 2200, check if we still can connect via SSH:
 ```
  $ ssh -p 2200 -i ~/.ssh/ubuntu-key.pem ubuntu@13.58.126.0
  # Note: In the Lightsail instance we have to add the TCP 2200 port
 ```
 ##### Create a new user account named grader
 ___
-We set the password to 'password', and use the command **finger** to check if the new user has been created successfully and see the user's details.
+Set the password to 'password', and use the command **finger** to check if the new user has been created successfully and see the user's details.
 ```
 $ sudo adduser grader
 $ finger grader
@@ -56,6 +56,24 @@ Create *grader* file inside *sudoers.d* directory, and add this text: **grader A
 ```
 $ touch /etc/sudoers.d/grader
 ```
+##### Create an SSH key pair for grader
+___
+Generate the keys using the ssh-keygen tool:
+```
+$ ssh-keygen
+```
+Log in with the user *grader* using the password. For that we have to set **PasswordAuthentication yes** in the configuration file: */etc/ssh/sshd_config*, later set it back to **no**, so Key-based SSH authentication is enforced.
+Then, create *.ssh/authorized_keys* and copy the content of the public key generated before (*grader_key.pub*). Finally apply permissions:
+
+```
+$ mkdir .ssh
+$ touch .ssh/authorized_keys
+$ nano .ssh/authorized_keys
+# paste the contents and save the file
+$ chmod 700 .ssh
+$ chmod 644 .ssh/authorized_keys
+```
+
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
 - [mod_wsgi (Apache)]
