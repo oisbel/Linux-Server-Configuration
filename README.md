@@ -110,11 +110,14 @@ postgres=# create user catalog with password 'password';
 postgres=# create database catalog with owner catalog;
 postgres=# grant all privileges on database catalog to catalog;
 ```
-##### Install git
+##### Install git and clone the catalog project
 ___
-Like before, use *apt-get* command:
+Like before, use *apt-get* command to install git, then clone *catalog* inside *www* directory:
 ```
 $ sudo apt-get install git
+$ cd /var/www
+$ sudo git clone https://github.com/oisbel/catalog-project.git
+# Use mv  -v to make sure all the files are at /var/www/catalog
 ```
 
 ### Resources Used
