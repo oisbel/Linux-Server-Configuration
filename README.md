@@ -79,6 +79,20 @@ To configure timezone:
 $ sudo dpkg-reconfigure tzdata
 # None of the above and then UTC
 ```
+##### Install and configure Apache to serve a Python mod_wsgi application
+___
+To serve Python using Apache and mod_wsgi, install:
+```
+$ sudo apt-get install python3
+$ sudo apt-get install apache2
+$ sudo apt-get install libapache2-mod-wsgi-py3
+```
+To configure Apache to handle requests using the WSGI module. You’ll do this by editing the */etc/apache2/sites-enabled/000-default.conf* file and  add the following line at the end of the *<VirtualHost>* section: **WSGIScriptAlias / /var/www/html/catalogapp.wsgi**. Now, *catalogapp.wsgi* will be the one the server shows instead of *index.html*.
+Finally, restart Apache:
+```
+$ sudo apache2ctl restart
+```
+
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
 - [mod_wsgi (Apache)]
