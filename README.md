@@ -13,48 +13,47 @@ In this project, we will take a baseline installation of a Linux server and prep
 ___
 Run the following commands to update currently installed packages, and removes packages no longer needed:
 ```
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get autoremove
+# sudo apt-get update
+# sudo apt-get upgrade
+# sudo apt-get autoremove
 ```
 #####  Change the SSH port from 22 to 2200
 ___
 Open sshd_config and change # Port 22 (to Port 2200):
 ```
-sudo nano /etc/ssh/sshd_config
-sudo service ssh restart
+# sudo nano /etc/ssh/sshd_config
+# sudo service ssh restart
 ```
 ##### Configure the Uncomplicated Firewall (UFW)
 ___
 Only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
 First check the ufw status. Then allow and deny according to the case( allow SSH (port 2200), HTTP (port 80), and NTP (port 123)), and finally enable the firewall:
 ```
-sudo ufw status
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow ssh
-sudo ufw allow 2200
-sudo ufw allow www
-sudo ufw allow 123
-sudo ufw enable)
+$ sudo ufw status
+$ sudo ufw default deny incoming
+$ sudo ufw default allow outgoing
+$ sudo ufw allow ssh
+$ sudo ufw allow 2200
+$ sudo ufw allow www
+$ sudo ufw allow 123
+$ sudo ufw enable)
 ```
 Since firewall is on, and SSH had beeen change to 2200, we check if we still can connect via SSH:
 ```
- ssh -p 2200 -i ~/.ssh/ubuntu-key.pem ubuntu@13.58.126.0
+ $ ssh -p 2200 -i ~/.ssh/ubuntu-key.pem ubuntu@13.58.126.0
  # Note: In the Lightsail instance we have to add the TCP 2200 port
 ```
 ##### Create a new user account named grader
 ___
 We set the password to 'password', and use the command **finger** to check if the new user has been created successfully and see the user's details.
 ```
-sudo adduser grader
-finger grader
+$ sudo adduser grader
+$ finger grader
 ```
 
 ### Resources Used
-- StackOverflow
-- Knockout JS Documentation
-- Google Maps API Documentation
-- Udacity The Frontend: JavaScript & AJAX Course
+- Udacity Course: Deploying to Linux Servers
+- [mod_wsgi (Apache)]
 
    [Catalog]: <https://github.com/oisbel/catalog-project.git>
+   [mod_wsgi (Apache)]:<http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/>
