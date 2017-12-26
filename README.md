@@ -19,10 +19,29 @@ sudo apt-get autoremove
 ```
 #####  Change the SSH port from 22 to 2200
 ___
-Open sshd_config and change # Port 22 (to Port 2200)
+Open sshd_config and change # Port 22 (to Port 2200):
 ```
 sudo nano /etc/ssh/sshd_config
 sudo service ssh restart
+```
+##### Configure the Uncomplicated Firewall (UFW)
+___
+Only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
+First check the ufw status. Then allow and deny according to the case( allow SSH (port 2200), HTTP (port 80), and NTP (port 123)), and finally enable the firewall:
+```
+sudo ufw status
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw allow 2200
+sudo ufw allow www
+sudo ufw allow 123
+sudo ufw enable)
+```
+Since firewall is on, and SSH had beeen change to 2200, we check if we still can connect via SSH:
+```
+ ssh -p 2200 -i ~/.ssh/ubuntu-key.pem ubuntu@13.58.126.0
+ # Note: In the Lightsail instance we have to add the TCP 2200 port
 ```
 
 ### Resources Used
