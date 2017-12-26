@@ -110,6 +110,12 @@ postgres=# create user catalog with password 'password';
 postgres=# create database catalog with owner catalog;
 postgres=# grant all privileges on database catalog to catalog;
 ```
+##### Install git
+___
+Like before, use *apt-get* command:
+```
+$ sudo apt-get install git
+```
 
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
