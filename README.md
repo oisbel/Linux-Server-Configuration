@@ -92,10 +92,30 @@ Finally, restart Apache:
 ```
 $ sudo apache2ctl restart
 ```
+##### Install and configure PostgreSQL
+___
+Install postgresql:
+```
+$ sudo apt-get install postgresql
+```
+Double check that no remote connections are allowed by looking in the host based authentication file:
+```
+$ sudo nano /etc/postgresql/9.5/main/pg_hba.conf
+```
+Now, create a new database user named *catalog* that has limited permissions to the catalog application database.
+```
+# To get into psql shell
+$ sudo -u postgres psql
+postgres=# create user catalog with password 'password';
+postgres=# create database catalog with owner catalog;
+postgres=# grant all privileges on database catalog to catalog;
+```
 
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
 - [mod_wsgi (Apache)]
+- [DigitalOcean]
 
    [Catalog]: <https://github.com/oisbel/catalog-project.git>
    [mod_wsgi (Apache)]:<http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/>
+   [DigitalOcean]: <https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps>
