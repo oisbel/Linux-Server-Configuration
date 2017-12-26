@@ -43,6 +43,13 @@ Since firewall is on, and SSH had beeen change to 2200, we check if we still can
  ssh -p 2200 -i ~/.ssh/ubuntu-key.pem ubuntu@13.58.126.0
  # Note: In the Lightsail instance we have to add the TCP 2200 port
 ```
+##### Create a new user account named grader
+___
+We set the password to 'password', and use the command **finger** to check if the new user has been created successfully and see the user's details.
+```
+sudo adduser grader
+finger grader
+```
 
 ### Resources Used
 - StackOverflow
