@@ -73,7 +73,12 @@ $ nano .ssh/authorized_keys
 $ chmod 700 .ssh
 $ chmod 644 .ssh/authorized_keys
 ```
-
+##### Configure the local timezone to UTC
+To configure timezone:
+```
+$ sudo dpkg-reconfigure tzdata
+# None of the above and then UTC
+```
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
 - [mod_wsgi (Apache)]
