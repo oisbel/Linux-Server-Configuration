@@ -50,7 +50,12 @@ We set the password to 'password', and use the command **finger** to check if th
 $ sudo adduser grader
 $ finger grader
 ```
-
+##### Give grader the permission to sudo
+___
+Create *grader* file inside *sudoers.d* directory, and add this text: **grader ALL=(ALL) NOPASSWD:ALL**
+```
+$ touch /etc/sudoers.d/grader
+```
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
 - [mod_wsgi (Apache)]
