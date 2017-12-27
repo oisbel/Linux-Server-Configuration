@@ -85,9 +85,9 @@ To serve Python using Apache and mod_wsgi, install:
 ```
 $ sudo apt-get install python3
 $ sudo apt-get install apache2
-$ sudo apt-get install libapache2-mod-wsgi-py3
+$ sudo apt-get install libapache2-mod-wsgi
 ```
-To configure Apache to handle requests using the WSGI module. You’ll do this by editing the */etc/apache2/sites-enabled/000-default.conf* file and  add the following line at the end of the *<VirtualHost>* section: **WSGIScriptAlias / /var/www/html/catalogapp.wsgi**. Now, *catalogapp.wsgi* will be the one the server shows instead of *index.html*.
+To configure Apache to handle requests using the WSGI module. You’ll do this by editing the */etc/apache2/sites-enabled/000-default.conf* file and  add the following line at the end of the *<VirtualHost>* section: **WSGIScriptAlias / /var/www/html/catalog.wsgi**. Now, *catalog.wsgi* will be the one the server execute instead of *index.html*.
 Finally, restart Apache:
 ```
 $ sudo apache2ctl restart
@@ -115,16 +115,14 @@ ___
 Like before, use *apt-get* command to install git, then clone *catalog* inside *www* directory:
 ```
 $ sudo apt-get install git
-$ cd /var/www
+$ cd /var/www/html
 $ sudo git clone https://github.com/oisbel/catalog-project.git
-# Use mv  -v to make sure all the files are at /var/www/catalog
+# Use mv  -v to make sure all the files are at /var/www/html
 ```
 
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
 - [mod_wsgi (Apache)]
-- [DigitalOcean]
 
    [Catalog]: <https://github.com/oisbel/catalog-project.git>
    [mod_wsgi (Apache)]:<http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/>
-   [DigitalOcean]: <https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps>
