@@ -3,11 +3,14 @@
 
 In this project, we will take a baseline installation of a Linux server and prepare it to host web applications. We will secure the server from a number of attack vectors, install and configure a database server (Postgres), and configured it to serve the [Catalog] application as a WSGI app.
 
-### i. IP address and SSH port
+##### IP address and SSH port:
+- ip: 13.58.126.0
+- port: 2200
 
-### ii. Complete URL to [Catalog] application
+##### Complete URL to [Catalog] application
+- url: http://13.58.126.0
 
-### iii. Softwares installed and configuration changes made
+### Softwares installed and configuration changes made
 
 ##### Update all currently installed packages( step 3)
 ___
