@@ -4,11 +4,11 @@
 In this project, we will take a baseline installation of a Linux server and prepare it to host web applications. We will secure the server from a number of attack vectors, install and configure a database server (Postgres), and configured it to serve the [Catalog] application as a WSGI app.
 
 ##### IP address and SSH port:
-- ip: 13.58.126.0
+- ip: 18.221.245.209
 - port: 2200
 
 ##### Complete URL to [Catalog] application
-- url: http://13.58.126.0
+- url: http://18.221.245.209
 
 ### Softwares installed and configuration changes made
 
@@ -43,7 +43,7 @@ $ sudo ufw enable)
 ```
 Since firewall is on, and SSH had beeen change to 2200, check if we still can connect via SSH:
 ```
- $ ssh -p 2200 -i ~/.ssh/ubuntu-key.pem ubuntu@13.58.126.0
+ $ ssh ubuntu@18.221.245.209 -p 2200 -i ~/.ssh/ubuntu-key.pem
  # Note: In the Lightsail instance we have to add the TCP 2200 port
 ```
 ##### Create a new user account named grader
@@ -128,6 +128,7 @@ To run the application you need a .wsgi file with the code mod_wsgi executing on
 > import sys
 > sys.path.insert(0, '/var/www/html/')
 > from application import app as application
+> application.secret_key = '88040422507vryyo'
 > #application is the name of the .py program
 
 Since catalog project is using **SQLite**, change the setup in each file come with the database connection( to **PostgreSQL**):
@@ -152,7 +153,7 @@ $ python database.py
 $ python additems.py
 $ sudo apache2ctl restart
 ```
-Finally, when open http://13.58.126.0 we should see the Catalog-Music website(if not, check error: *sudo cat /var/log/apache2/error.log*)
+Finally, when open http://18.221.245.209 we should see the Catalog-Music website(if not, check error: *sudo cat /var/log/apache2/error.log*)
 
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
