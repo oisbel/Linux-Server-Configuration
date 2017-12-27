@@ -20,12 +20,14 @@ Run the following commands to update currently installed packages, and removes p
 # sudo apt-get upgrade
 # sudo apt-get autoremove
 ```
-#####  Change the SSH port from 22 to 2200
+#####  Change the SSH configuration
 ___
-Open sshd_config and change # Port 22 (to Port 2200):
+To change the SSH  port from 22 to 2200, disable root login, and password-based login through ssh:
+Open sshd_config and change # Port 22 (to Port 2200), *PermitRootLogin no*, and *PasswordAuthentication no*.
 ```
-# sudo nano /etc/ssh/sshd_config
-# sudo service ssh restart
+$ sudo nano /etc/ssh/sshd_config
+# Changes...
+$ sudo service ssh restart
 ```
 ##### Configure the Uncomplicated Firewall (UFW)
 ___
