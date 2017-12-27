@@ -140,6 +140,16 @@ $ sudo pip install psycopg2
 $ sudo pip install oauth2client
 $ sudo pip install httplib2
 ```
+##### Set it up in your server
+___
+To create tables and populate the database execute:
+```
+$ cd /var/www/html/
+$ python database.py
+$ python additems.py
+$ sudo apache2ctl restart
+```
+Finally, when open http://13.58.126.0 we should see the Catalog-Music website(if not, check error: *sudo cat /var/log/apache2/error.log*)
 
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
