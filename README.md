@@ -119,6 +119,27 @@ $ cd /var/www/html
 $ sudo git clone https://github.com/oisbel/catalog-project.git
 # Use mv  -v to make sure all the files are at /var/www/html
 ```
+##### Set up catalog project
+___
+To run the application you need a .wsgi file with the code mod_wsgi executing on startup to get the application object.So, inside */var/www/html* create catalog.wsgi and add the following into the file:
+> import sys
+> sys.path.insert(0, '/var/www/html/')
+> from application import app as application
+> #application is the name of the .py program
+
+Since catalog project is using **SQLite**, change the setup in each file come with the database connection( to **PostgreSQL**):
+> engine = create_engine('postgresql://catalog:password@localhost/catalog')
+
+Install python packages:
+```
+$ apt-get install python-pip
+$ pip install Flask
+$ sudo pip install requests
+$ sudo pip install sqlalchemy
+$ sudo pip install psycopg2
+$ sudo pip install oauth2client
+$ sudo pip install httplib2
+```
 
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
