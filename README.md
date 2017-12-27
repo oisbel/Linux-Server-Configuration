@@ -12,7 +12,7 @@ In this project, we will take a baseline installation of a Linux server and prep
 
 ### Softwares installed and configuration changes made
 
-##### Update all currently installed packages( step 3)
+##### Update all currently installed packages
 ___
 Run the following commands to update currently installed packages, and removes packages no longer needed:
 ```
@@ -155,9 +155,14 @@ $ sudo apache2ctl restart
 ```
 Finally, when open http://18.221.245.209 we should see the Catalog-Music website(if not, check error: *sudo cat /var/log/apache2/error.log*)
 
+##### Google OAuth Problem
+
+Since Google OAuth doesn't work for bare IPs, to get log into the website we have to create a domain name for the server.
+Then, in the OAuth credential we have to add this domain to *Authorized JavaScript origins*, that way we don't get *Error: origin_mismatch* from Google.
+
 ### Resources Used
 - Udacity Course: Deploying to Linux Servers
-- [mod_wsgi (Apache)]
+- [Deploying-mod_wsgi (Apache)]
 
    [Catalog]: <https://github.com/oisbel/catalog-project.git>
-   [mod_wsgi (Apache)]:<http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/>
+   [Deploying-mod_wsgi (Apache)]:<http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/>
