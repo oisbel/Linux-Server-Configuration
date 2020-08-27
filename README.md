@@ -43,10 +43,11 @@ $ sudo ufw allow www
 $ sudo ufw allow 123
 $ sudo ufw enable)
 ```
-Since firewall is on, and SSH had beeen change to 2200, check if we still can connect via SSH:
+Since firewall is on, and SSH had beeen change to 2200, check if we still can connect via SSH. 
 ```
  $ ssh ubuntu@18.221.245.209 -p 2200 -i ~/.ssh/ubuntu-key.pem
  # Note: In the Lightsail instance we have to add the TCP 2200 port
+ # Note: (You have to download the default key from that region from AWS)
 ```
 ##### Create a new user account named grader
 ___
@@ -77,6 +78,7 @@ $ nano .ssh/authorized_keys
 # paste the contents and save the file
 $ chmod 700 .ssh
 $ chmod 644 .ssh/authorized_keys
+# Note: If you are unable to login using the password just switch to the new user account - > su - newuser
 ```
 ##### Configure the local timezone to UTC
 To configure timezone:
